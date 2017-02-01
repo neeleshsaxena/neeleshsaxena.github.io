@@ -1,0 +1,5 @@
+<div id="loader">
+        <div class="spinner-wrapper">
+          <span class="spinner"></span>
+        </div>
+      </div>
