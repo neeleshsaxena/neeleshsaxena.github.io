@@ -120,21 +120,60 @@ jQuery(function($) {
 	});
 
 	// Contact form
-	var form = $('#main-contact-form');
-	form.submit(function(event){
+	/*var form = $('#main-contact-form');
+	
+	$("#submit").click(function(event){
 		event.preventDefault();
+		var data = {
+    name: $("#form_name").val(),
+    email: $("#form_email").val(),
+	subject: $("#form_subject").val(),
+    message: $("#msg_message").val()
+	};
 		var form_status = $('<div class="form_status"></div>');
 		$.ajax({
 			
-			url: $(this).attr('action'),
-			beforeSend: function(){
-				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Email is sending...</p>').fadeIn() );
-			}
-		}).done(function(data){
-			form_status.html('<p class="text-success">Thank you for contacting me. Will reach out to you soon.</p>').delay(3000).fadeOut();
-		});
+			type: "POST",
+			data: data,
+			dataType:'jsonp',
+			url: "sendemail.php",
+			crossDomain: true,
+			success: function(){
+        window.alert("email sent");
+		}
 	});
+	}); */
+	var myform = $("form#myform");
+	myform.submit(function(event){
+	event.preventDefault();
 
+	var params = myform.serializeArray().reduce(function(obj, item) {
+     obj[item.name] = item.value;
+     return obj;
+	}, {});
+
+	// Change to your service ID, or keep using the default service
+	var service_id = "default_service";
+	var form_status = $('#form_status');
+	var template_id = "email";
+	myform.find("button").text("Sending...");
+	emailjs.send(service_id,template_id,params)
+  	.then(function(){ 
+       
+       myform.find("button").text("Send");
+	   mailSent();
+	   //enter here
+     }, function(err) {
+       alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+       myform.find("button").text("Send");
+    });
+
+	return false;
+	
+	});
+	
+	
+	
 	//Google Map
 	var latitude = $('#google-map').data('latitude')
 	var longitude = $('#google-map').data('longitude')
@@ -159,6 +198,20 @@ jQuery(function($) {
 		});
 	}
 	google.maps.event.addDomListener(window, 'load', initialize_map);
+	
+	
+	function mailSent(){
+		
+		  $.notify({
+      icon: 'fa fa-paw',
+      message: '<strong>Thank you for contacting me. Will reach out to you soon.!</strong>'
+    },{
+      type: 'success',
+      delay: 2000
+    });
+		
+		
+	}
 	
 });
 
