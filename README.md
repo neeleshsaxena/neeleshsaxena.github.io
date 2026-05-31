@@ -17,7 +17,6 @@ Static HTML/CSS/JS deployed via GitHub Pages on the `master` branch. Stack: Boot
 - `js/` — vendor libraries (jQuery, Bootstrap, fullPage, WOW, Lightbox, Fancybox, etc.) and `main.js` / `map.js` for page behavior
 - `images/` — slider backgrounds, portfolio thumbnails, logos, profile photos
 - `fonts/` — Font Awesome / icon font files
-- `docs/` — downloadable resume PDF linked from the About Me section
 - `sendemail.php` — legacy server-side mail script (the live form uses EmailJS instead)
 - `*.txt` — scratch/backup snippets (`portfolio.txt`, `pagescroll.txt`, `intialSpinnerLoader.txt`, `trigger.txt`); not loaded by the site
 
