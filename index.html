@@ -275,9 +275,9 @@
         <div class="grid md:grid-cols-3 gap-10">
           <div class="md:col-span-2 space-y-5 text-ink/85 leading-relaxed text-[1.05rem]">
             <p>
-              I'm a software engineer at <a href="https://www.splunk.com" target="_blank" rel="noopener" class="lnk">Splunk</a>,
-              where I work on Behavior Analytics — a platform that lets data scientists deploy
-              streaming and batch ML models for real-time threat detection. Most of my day involves
+              I'm a senior software engineer at <a href="https://www.splunk.com" target="_blank" rel="noopener" class="lnk">Splunk</a>,
+              where I work on Behavior Analytics — a multi-cell streaming / batch ML platform for
+              real-time threat detection used by ~80 enterprise SOC customers. Most of my day involves
               wrestling with throughput, AWS, and the inevitable surprises of distributed systems.
             </p>
             <p>
@@ -340,7 +340,7 @@
           <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-3 md:gap-6 items-start">
             <span class="font-mono text-sm text-amber pt-1">aws / cloud</span>
             <div class="flex flex-wrap gap-2">
-              <span class="tag">Lambda</span><span class="tag">SQS</span><span class="tag">Kinesis</span><span class="tag">Step Functions</span><span class="tag">EMR</span><span class="tag">Glue</span><span class="tag">Aurora</span><span class="tag">RDS Proxy</span><span class="tag">EC2</span>
+              <span class="tag">Lambda</span><span class="tag">SQS</span><span class="tag">Kinesis</span><span class="tag">Step Functions</span><span class="tag">EMR</span><span class="tag">Glue</span><span class="tag">Aurora</span><span class="tag">RDS Proxy</span><span class="tag">S3</span><span class="tag">EC2</span>
             </div>
           </div>
           <div class="hairline"></div>
@@ -356,7 +356,7 @@
           <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-3 md:gap-6 items-start">
             <span class="font-mono text-sm text-amber pt-1">data</span>
             <div class="flex flex-wrap gap-2">
-              <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Neo4j</span><span class="tag">Redis</span><span class="tag">Oracle</span><span class="tag">SQL Server</span>
+              <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Neo4j</span><span class="tag">Redis</span><span class="tag">Oracle</span><span class="tag">SQL Server</span><span class="tag">Apache Spark</span><span class="tag">Parquet</span><span class="tag">Delta Lake</span>
             </div>
           </div>
           <div class="hairline"></div>
@@ -387,12 +387,15 @@
             <p class="font-mono text-sm text-amber whitespace-nowrap">Jun 2020 — present</p>
           </header>
           <ul class="space-y-3 text-ink/80 leading-relaxed">
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Building Behavior Analytics — a streaming / batch ML platform for real-time threat detection on Splunk's enterprise security stack.</span></li>
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Scaled the system from 50&nbsp;TB/day to 75&nbsp;TB/day by fixing a database-connection bottleneck with AWS RDS Proxy in front of Aurora.</span></li>
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Led migration of internal messaging from Apache Pulsar to AWS SQS — wrote a Java wrapper for batched throughput and cut infra cost by <span class="text-amber">~70%</span>.</span></li>
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Designed a new Risk Scoring system for Splunk Enterprise Security; presented it at Splunk <span class="font-mono">.Conf</span> Innovation Labs.</span></li>
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Shipped reusable Terraform modules for multi-region deploys + an automated AWS Secrets-Manager rotation module (saving engineers ~4 hrs/month).</span></li>
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Stood up Prometheus + Grafana observability on Java microservices running on Kubernetes; rolled out a CI/CD-integrated Cypress UI test framework.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Resolved an Aurora connection-overhead bottleneck that crashed clusters under load by introducing AWS RDS Proxy for backend connection pooling — raised per-cell ingest from ~50&nbsp;TB/day to a sustained <span class="text-amber">75&nbsp;TB/day</span> (headroom to ~110&nbsp;TB/day), unblocking scale-out to 15+ production cells.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Drove Pulsar&nbsp;→&nbsp;SQS migration with a custom Java SQS wrapper — exposed perf-test-derived throughput tunables, batched messages per tenant to fit SQS's 64&nbsp;KB compressed billing unit, and decommissioned legacy Pulsar topics; cut messaging infra cost by <span class="text-amber">~70%</span>.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built and shipped a new Risk Scoring system for Splunk Enterprise Security end-to-end — backend scoring on ML baseline-model output plus a React + Python Splunk app that surfaces scored anomalies as insider-threat alerts for SOC analysts; rolled out to all <span class="text-amber">~80 ES customers</span> and demoed at Splunk <span class="font-mono">.Conf</span> Innovation Labs.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Led design and rollout of a high-throughput micro-batching service (approved through CCAB/CCF) — consumes JSON events from SQS, writes compressed Parquet to S3 with dual size/time flush and Delta-style partitioned, column-sorted layouts that let downstream Spark EMR jobs skip row groups and prune partitions; instrumented end-to-end with Prometheus + Grafana for oncall.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Performance-tuned JVM microservices on Kubernetes end-to-end — built a Python harness that spins up K8s pods to simulate customer event-rate ingest, identified throughput bottlenecks, and tuned HPA to scale on custom Prometheus signals (queue depth, thread busyness) instead of CPU/memory defaults.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built reusable Terraform modules — multi-region deployment patterns and an automated AWS Secrets-Manager credential-rotation flow — standardizing infra across teams and cutting <span class="text-amber">~4 hrs/month</span> of manual rotation toil per engineer.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built team-facing DX tooling — a CI/CD-integrated Cypress E2E framework gating PRs against UI regressions, plus a Mend Renovate dependency bot that auto-bumps versions across a 3-tier internal package cascade (dependency-manager&nbsp;→&nbsp;common libs&nbsp;→&nbsp;microservices) on upstream publish.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built tooling to accelerate oncall onboarding — packaged team admin-action runbooks into reusable skills, and prototyped a <span class="text-amber">Claude-backed</span> oncall assistant with RAG over runbooks, past incidents, and PIRs so new oncalls can self-serve answers instead of paging senior engineers.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Regular presenter in Splunk's CCAB / CCF architecture reviews — pitch designs to PM, UX, and peer engineering teams, and drive approved designs end-to-end through delivery.</span></li>
           </ul>
           <div class="mt-5 flex flex-wrap gap-2">
             <span class="tag">Java</span><span class="tag">Python</span><span class="tag">React</span><span class="tag">AWS</span><span class="tag">Terraform</span><span class="tag">Kubernetes</span>
@@ -409,9 +412,9 @@
             <p class="font-mono text-sm text-amber whitespace-nowrap">Jun 2017 — Jun 2020</p>
           </header>
           <ul class="space-y-3 text-ink/80 leading-relaxed">
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Full-stack work on NetWitness — RSA's cyber-security platform — across its Ember/Redux frontend and supporting microservices.</span></li>
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Introduced WebDriver IO as the team's end-to-end JS automation framework, replacing a brittle legacy stack.</span></li>
-            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built React UIs for real-time network monitoring with typeahead search, query caching, and in-browser state persistence for analyst preferences.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Helped build RSA NetWitness's <span class="text-amber">first</span> E2E JS automation framework as part of a 2-engineer team — picked WebDriver IO (Mocha-based), established test patterns, and stood up initial coverage from zero.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built React UIs used by SOC analysts at enterprise customers for real-time network monitoring and threat investigation in NetWitness — focused on rendering high-cardinality streaming data into investigation-ready views.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built end-to-end search UX for analyst queries in NetWitness — backend microservice APIs with real-time validation and typeahead, Redux query caching for repeat lookups, and in-browser state persistence for analyst preferences across sessions.</span></li>
           </ul>
           <div class="mt-5 flex flex-wrap gap-2">
             <span class="tag">Ember</span><span class="tag">React</span><span class="tag">Redux</span><span class="tag">Node.js</span><span class="tag">WebDriver IO</span>
