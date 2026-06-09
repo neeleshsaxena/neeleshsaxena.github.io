@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Neelesh Saxena — software engineer at Splunk. Building scalable cloud-native systems. Based in San Francisco." />
+  <meta name="description" content="Neelesh Saxena — senior software engineer at Splunk. Scaling a multi-cell ML threat-detection platform for 80+ enterprise SOC customers. Based in San Francisco." />
   <meta name="author" content="Neelesh Saxena" />
   <meta name="theme-color" content="#14110d" />
 
-  <title>Neelesh Saxena — Software Engineer</title>
+  <title>Neelesh Saxena — Senior Software Engineer</title>
 
   <meta property="og:title" content="Neelesh Saxena" />
-  <meta property="og:description" content="Software engineer at Splunk. Building scalable cloud-native systems." />
+  <meta property="og:description" content="Senior software engineer at Splunk. Scaling threat detection for 80+ enterprise SOC customers." />
   <meta property="og:url" content="https://neeleshsaxena.github.io" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
@@ -248,13 +248,13 @@
         </h1>
 
         <p class="mt-10 font-mono text-base sm:text-lg text-muted max-w-3xl">
-          <span class="typewriter">software engineer · building systems that scale</span>
+          <span class="typewriter">distributed systems · perf · DX · LLM tooling</span>
         </p>
 
         <p class="mt-8 text-ink/80 max-w-2xl leading-relaxed">
-          Experienced engineer passionate about scalable cloud-native applications and developer
-          productivity. Currently at <span class="text-amber">Splunk</span>, formerly RSA.
-          Based in San Francisco.
+          Senior engineer at <span class="text-amber">Splunk</span> on Behavior Analytics — scaling
+          a multi-cell ML threat-detection platform for 80+ enterprise SOC customers. Previously
+          RSA Security. Based in San Francisco.
         </p>
 
         <div class="mt-12 flex flex-wrap gap-x-7 gap-y-3 font-mono text-sm">
@@ -281,6 +281,11 @@
               wrestling with throughput, AWS, and the inevitable surprises of distributed systems.
             </p>
             <p>
+              Beyond shipping features, I mentor juniors on the team, own oncall response across our
+              service fleet, and build internal tooling — most recently a Claude-backed oncall assistant
+              with RAG over runbooks and PIRs — that scales how the team operates.
+            </p>
+            <p>
               Before that I spent three years at
               <a href="https://www.rsa.com" target="_blank" rel="noopener" class="lnk">RSA Security</a>
               building NetWitness — an Ember-Redux cyber-security tool — and the React UIs that
@@ -297,9 +302,9 @@
             <p class="text-amber mb-3">~/now</p>
             <ul class="space-y-2">
               <li><span class="text-dim">·</span> Scaling Behavior Analytics at Splunk</li>
+              <li><span class="text-dim">·</span> Prototyping a Claude-backed oncall assistant</li>
               <li><span class="text-dim">·</span> Wiring up a Raspberry Pi soil-moisture rig</li>
-              <li><span class="text-dim">·</span> Reading on Sundays, coffee on weekdays</li>
-              <li><span class="text-dim">·</span> Open to chats — say hi below</li>
+              <li><span class="text-dim">·</span> Exploring side roads on the motorcycle most weekends</li>
             </ul>
           </aside>
         </div>
@@ -367,6 +372,14 @@
               <span class="tag">Docker</span><span class="tag">Terraform</span><span class="tag">Kubernetes</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">GitLab CI</span>
             </div>
           </div>
+          <div class="hairline"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-3 md:gap-6 items-start">
+            <span class="font-mono text-sm text-amber pt-1">ai / llm</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">Claude API</span><span class="tag">RAG</span><span class="tag">LLM tooling</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -394,11 +407,13 @@
             <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Performance-tuned JVM microservices on Kubernetes end-to-end — built a Python harness that spins up K8s pods to simulate customer event-rate ingest, identified throughput bottlenecks, and tuned HPA to scale on custom Prometheus signals (queue depth, thread busyness) instead of CPU/memory defaults.</span></li>
             <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built reusable Terraform modules — multi-region deployment patterns and an automated AWS Secrets-Manager credential-rotation flow — standardizing infra across teams and cutting <span class="text-amber">~4 hrs/month</span> of manual rotation toil per engineer.</span></li>
             <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built team-facing DX tooling — a CI/CD-integrated Cypress E2E framework gating PRs against UI regressions, plus a Mend Renovate dependency bot that auto-bumps versions across a 3-tier internal package cascade (dependency-manager&nbsp;→&nbsp;common libs&nbsp;→&nbsp;microservices) on upstream publish.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Own oncall response for the team's <span class="text-amber">5–6 product services</span> end-to-end — incident triage, SLA restoration (latency, error rate, freshness), cross-team war-room coordination, P0 post-incident reviews, runbook authorship, and alert tuning for noise reduction.</span></li>
             <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Built tooling to accelerate oncall onboarding — packaged team admin-action runbooks into reusable skills, and prototyped a <span class="text-amber">Claude-backed</span> oncall assistant with RAG over runbooks, past incidents, and PIRs so new oncalls can self-serve answers instead of paging senior engineers.</span></li>
             <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Regular presenter in Splunk's CCAB / CCF architecture reviews — pitch designs to PM, UX, and peer engineering teams, and drive approved designs end-to-end through delivery.</span></li>
+            <li class="flex gap-3"><span class="text-amber font-mono">▸</span><span>Mentor <span class="text-amber">4 junior engineers</span> on the team — own their design reviews, code feedback, and promo prep; one mentee promoted to the next level.</span></li>
           </ul>
           <div class="mt-5 flex flex-wrap gap-2">
-            <span class="tag">Java</span><span class="tag">Python</span><span class="tag">React</span><span class="tag">AWS</span><span class="tag">Terraform</span><span class="tag">Kubernetes</span>
+            <span class="tag">Java</span><span class="tag">Python</span><span class="tag">React</span><span class="tag">AWS</span><span class="tag">Terraform</span><span class="tag">Kubernetes</span><span class="tag">Spark</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Claude</span><span class="tag">RAG</span>
           </div>
         </article>
 
